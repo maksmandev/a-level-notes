@@ -1,0 +1,142 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0"
+  },
+  "host": "localhost:5000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Notes",
+      "description": "API for notes"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/notes": {
+      "post": {
+        "tags": ["Notes"],
+        "summary": "Create new note",
+
+        "description": "Create new note",
+        "parameters": [
+          {
+            "name": "note",
+            "in": "body",
+            "description": "Note that we want to create",
+            "schema": {
+              "$ref": "#/definitions/Note"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "New note is created",
+            "schema": {
+              "$ref": "#/definitions/Note"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Notes"],
+        "summary": "Get all notes in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Notes"
+            }
+          }
+        }
+      }
+    },
+    "/notes/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of note that we want to find",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": ["Notes"],
+        "summary": "Get note with given ID",
+        "responses": {
+          "200": {
+            "description": "Note is found",
+            "schema": {
+              "$ref": "#/definitions/Note"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete note with given ID",
+        "tags": ["Notes"],
+        "responses": {
+          "200": {
+            "description": "Note is deleted",
+            "schema": {
+              "$ref": "#/definitions/Note"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update note with give ID",
+        "tags": ["Notes"],
+        "parameters": [
+          {
+            "name": "note",
+            "in": "body",
+            "description": "Note with new values of properties",
+            "schema": {
+              "$ref": "#/definitions/Note"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Note is updated",
+            "schema": {
+              "$ref": "#/definitions/Note"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Note": {
+      "required": ["text"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "text": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "createdAt": {
+          "type": "string",
+          "uniqueItems": false
+        },
+        "updatedAt": {
+          "type": "string",
+          "uniqueItems": false
+        }
+      }
+    },
+    "Notes": {
+      "type": "array",
+      "$ref": "#/definitions/Note"
+    }
+  }
+}

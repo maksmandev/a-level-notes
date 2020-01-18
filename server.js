@@ -8,7 +8,7 @@ app.use(experess.json());
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-const port = 5000;
+const port = 80;
 
 app.get("/notes", async (req, res) => {
   const notes = await Note.findAll();

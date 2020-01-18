@@ -1,8 +1,8 @@
 const Sequelize = require("sequelize");
 const NotesModel = require("../models/note");
 
-const sequelize = new Sequelize("notes", "root", "password", {
-  host: "localhost",
+const sequelize = new Sequelize("QkxgxWlv8y", "QkxgxWlv8y", "bEK0dgs4NM", {
+  host: "remotemysql.com",
   dialect: "mysql",
   pool: {
     max: 10,

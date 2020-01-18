@@ -42,4 +42,6 @@ app.delete("/notes/:id", async (req, res) => {
   res.status(200).send();
 });
 
-app.listen(port, () => console.log(`Server listening on port: ${port}`));
+app.listen(port, "0.0.0.0", () =>
+  console.log(`Server listening on port: ${port}`)
+);

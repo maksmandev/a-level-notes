@@ -42,6 +42,10 @@ app.delete("/notes/:id", async (req, res) => {
   res.status(200).send();
 });
 
+app.get("/", (req, res) => {
+  res.redirect("/api-docs");
+});
+
 app.listen(process.env.PORT || 5000, "0.0.0.0", () =>
   console.log(`Server listening on port: 5000`)
 );
